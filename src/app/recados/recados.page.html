@@ -1,0 +1,32 @@
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Recados</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="logout()">
+              <ion-icon slot="end" name="log-out">
+                <ion-label>sair</ion-label>
+              </ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content *ngFor="let recado of recados" color="light" >
+        <ion-list>
+          <ion-item-divider color="success">
+            <ion-label class="titulo">Título:{{recado.titulo_recado}}</ion-label>
+          </ion-item-divider>
+          <ion-item>
+            <ion-icon name="star" slot="start"></ion-icon>
+            <ion-label >Autor: Sindico - Data: 14/04/2021 </ion-label>
+          </ion-item>
+          <ion-item class="autor">
+          <ion-text><br>Recado:{{recado.desc_recado}}</ion-text>  
+          </ion-item>
+        </ion-list>
+      </ion-content>
+      <ion-footer class="ion-no-border">
+        <ion-button color="success" class="recado-button" (click)="Cadastra_recados()">INSERIR RECADO</ion-button>
+      </ion-footer>  
+      
+
+  

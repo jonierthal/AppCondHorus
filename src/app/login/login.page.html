@@ -1,0 +1,27 @@
+<ion-content>
+    <div class="login ion-padding">
+        <div class="heading ion-padding">
+            <h1>Bem vindo AppCondHorus</h1>
+            <p>Faça login para continuar!</p>
+        </div>
+        <div class="login-form ion-padding">
+            <div class="form-input">
+                <ion-icon name="person-circle-outline"></ion-icon>
+                <ion-item>
+                    <ion-label position="floating">USUÁRIO</ion-label>
+                    <ion-input type="name" [(ngModel)]="nome"></ion-input>
+                </ion-item>
+            </div>
+            <div class="form-input">
+                <ion-icon name="key-outline"></ion-icon>
+                <ion-item>
+                    <ion-label position="floating">SENHA</ion-label>
+                    <ion-input type="password" [(ngModel)]="senha"></ion-input>
+                </ion-item>
+            </div>
+        </div>
+        <div class="action-buttons ion-padding">
+            <ion-button size="large" class="login-button" (click)="Login()" >Login</ion-button>
+        </div>
+    </div>
+</ion-content>

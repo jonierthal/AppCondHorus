@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Adicionar Usuários</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="end" name="log-out">
+          <ion-label>sair</ion-label>
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+ <ion-item>
+   <ion-label position="floating">
+      Nome
+   </ion-label>
+   <ion-input [(ngModel)]="nome"></ion-input>
+ </ion-item>
+  <ion-item>
+    <ion-label position="floating">
+       Sobrenome
+    </ion-label>
+    <ion-input [(ngModel)]="sobrenome"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">
+       Senha
+    </ion-label>
+    <ion-input type="password" [(ngModel)]="senha_original"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">
+       Telefone
+    </ion-label>
+    <ion-input type="tel" [(ngModel)]="telefone"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">
+       Email
+    </ion-label>
+    <ion-input type="email" [(ngModel)]="email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">
+       Data de nascimento
+    </ion-label>
+    <ion-input type="date" placeholder="" [(ngModel)]="data_nascimento"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">
+      Apartamento
+    </ion-label>
+    <ion-input type="number"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Função:</ion-label>
+    <ion-select placeholder="Selecione" >
+      <ion-select-option value="sindico">Síndico</ion-select-option>
+      <ion-select-option value="sub_sindico">Subsíndico</ion-select-option>
+      <ion-select-option value="morador">Condômino</ion-select-option>
+      <ion-select-option value="administradora">Administrador</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button *ngIf="!id_usuario" color="success" expand="block" (click)="cadastrar()">Confirma</ion-button>
+  <ion-button *ngIf="id_usuario " color="primary" expand="block" (click)="editar()">Editar</ion-button>
+ </ion-content>

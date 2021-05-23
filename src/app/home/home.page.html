@@ -1,20 +1,67 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<!--<img class="logo" src="../../assets/img/logo3.jpg">-->
+<p>Bem vindo ao App Cond Horus!</p>
+<ion-content class="menu">
+    <div class="cards">
+      <ion-row>
+        <ion-col>
+          <ion-card (click)="Pag_recados()">
+            <ion-card-header></ion-card-header>
+             <img class="tamanhoImg" src="../../assets/img/menu_recados.png"> 
+            <h6>Recados</h6>
+          </ion-card>   
+        </ion-col>
+        <ion-col size="6">
+          <ion-card (click)="Pag_regras()">
+            <ion-card-header></ion-card-header>
+              <img class="tamanhoImg" src="../../assets/img/menu_regras.png" alt="">
+            <h6>Regras</h6>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-card (click)="Pag_melhorias()">
+            <ion-card-header></ion-card-header>
+              <img class="tamanhoImg" src="../../assets/img/menu_problemas.png" alt="">
+              <h6>Melhorias</h6>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card (click)="Pag_relatorios()">
+            <ion-card-header></ion-card-header>
+              <img class="tamanhoImg" src="../../assets/img/menu_relatorios.png" alt="">
+              <h6>Relatórios</h6>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-card (click)="Pag_equipe()">
+            <ion-card-header></ion-card-header>
+              <img class="tamanhoImg" src="../../assets/img/menu_equipe.png" alt="">
+             <h6>Equipe</h6>
+           </ion-card>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card (click)="logout()">
+            <ion-card-header></ion-card-header>
+            <img class="tamanhoImg" src="../../assets/img/menu_sair.png" alt="">
+             <h6>Sair</h6>
+           </ion-card>
+        </ion-col>
+      </ion-row>  
+      <ion-row>
+        <ion-col size="6">
+          <ion-card (click)="Pag_Administrador()">
+            <ion-card-header></ion-card-header>
+              <img class="tamanhoImg" src="../../assets/img/menu_adm.png" alt="">
+             <h6>Administrador</h6>
+           </ion-card>
+        </ion-col>
+      </ion-row>  
+    </div>
+  </ion-content>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+         
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+  

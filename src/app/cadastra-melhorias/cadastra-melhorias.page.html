@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Adicionar Melhoria</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="end" name="log-out">
+          <ion-label>sair</ion-label>
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+ <ion-item>
+   <ion-label position="floating">
+      Título da Melhoria
+   </ion-label>
+   <ion-input type="text" name="titulo"></ion-input>
+ </ion-item>
+  <ion-item>
+    <ion-label position="floating">
+       Descrição
+    </ion-label>
+    <ion-input type="text" name="descricao"></ion-input>
+  </ion-item>
+  <ion-button  color="success" expand="block">Confirma</ion-button>
+ </ion-content>

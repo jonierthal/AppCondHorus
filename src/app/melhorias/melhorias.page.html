@@ -1,0 +1,36 @@
+
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Melhorias</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="logout()">
+              <ion-icon slot="end" name="log-out">
+                <ion-label>sair</ion-label>
+              </ion-icon>
+            </ion-button>
+          </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content color="light">
+      <ion-list>
+        <ion-item-divider color="primary">
+          <ion-label class="titulo">Título: Melhorias garagem</ion-label>
+        </ion-item-divider>
+        <ion-item>
+          <ion-icon name="star" slot="start" class="ion-text-wrap"></ion-icon>
+          <ion-text >Solicitante: Fabio Almeida - Apartamento: 605 - Data: 14/04/2021 </ion-text>
+        </ion-item>
+        <ion-item >
+           <ion-text><br>Recado: Precisa ser feito uma melhoria na disposições das garanges...</ion-text>
+        </ion-item>
+        <ion-item >
+          <ion-text >Responável: Subsindico/Alessandro Fabres - Data aprovação: 15/04/2021 </ion-text>
+        </ion-item>
+        <ion-item >
+          <ion-text>situação: Em andamento</ion-text>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+    <ion-footer class="ion-no-border">
+      <ion-button class="melhoria-button" (click)="Cadastra_Melhorias()">INSERIR MELHORIA</ion-button>
+    </ion-footer>   
