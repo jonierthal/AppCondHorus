@@ -5,22 +5,21 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/services/post';
 
 @Component({
-  selector: 'app-cadastra-melhorias',
-  templateUrl: './cadastra-melhorias.page.html',
-  styleUrls: ['./cadastra-melhorias.page.scss'],
+  selector: 'app-cadastra-regras',
+  templateUrl: './cadastra-regras.page.html',
+  styleUrls: ['./cadastra-regras.page.scss'],
 })
-export class CadastraMelhoriasPage implements OnInit {
+export class CadastraRegrasPage implements OnInit {
 
-  titulo_melhoria: string = "";
-  desc_melhoria: string = "";
+  titulo_regra: string = "";
+  desc_regra: string = "";
 
-  constructor(public toast: ToastController, private storage:NativeStorage, private router:Router,
-  private actRouter: ActivatedRoute, private provider: Post) { }
+  constructor(public toast: ToastController, private storage:NativeStorage, private router:Router, private actRouter: ActivatedRoute, private provider: Post) { }
 
   ngOnInit() {
     this.actRouter.params.subscribe((data:any)=>{
-      this.titulo_melhoria = data.titulo_melhoria;
-      this.desc_melhoria = data.desc_melhoria;
+      this.titulo_regra = data.titulo_regra;
+      this.desc_regra = data.desc_regra;
     });
   }
 
@@ -37,7 +36,7 @@ export class CadastraMelhoriasPage implements OnInit {
 
     async MensagemSalvar() {
       const toast = await this.toast.create({
-        message: 'Melhoria salva com sucesso',
+        message: 'Regra salva com sucesso',
         duration: 1000
       });
       toast.present();
@@ -46,13 +45,13 @@ export class CadastraMelhoriasPage implements OnInit {
     cadastrar(){
       return new Promise(resolve => {
         let dados = {
-          requisicao : 'add_melhoria',
-          titulo_melhoria : this.titulo_melhoria,
-          desc_melhoria : this.desc_melhoria,
+          requisicao : 'add_regra',
+          titulo_regra : this.titulo_regra,
+          desc_regra : this.desc_regra,
         };
   
           this.provider.dadosApi(dados,'/api.php').subscribe(data => {
-            this.router.navigate(['/tab-nav/melhorias']);
+            this.router.navigate(['/tab-nav/regras']);
             this.MensagemSalvar();
           })
       })
@@ -60,3 +59,4 @@ export class CadastraMelhoriasPage implements OnInit {
     };
 
 }
+

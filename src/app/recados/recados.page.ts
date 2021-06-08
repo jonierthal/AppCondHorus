@@ -14,7 +14,6 @@ export class RecadosPage implements OnInit {
   recados: any[];
   limit: number = 15;
   start: number = 0;
-  titulo_recado: string = "";
 
   constructor(public toast: ToastController, private storage:NativeStorage, private router:Router,private provider: Post) { }
 
@@ -33,14 +32,13 @@ export class RecadosPage implements OnInit {
 
     return new Promise(resolve => {
       this.recados = [];
-    let dados = {
+    let dados_recado = {
       requisicao : 'listar_recado',
-      titulo_recado : this.titulo_recado,
       limit: this.limit,
       start: this.start,
     };
 
-      this.provider.dadosApi(dados,'/api.php').subscribe(data => {
+      this.provider.dadosApi(dados_recado,'/api.php').subscribe(data => {
         if(data['result'] == '0'){
           alert('Não possui mais dados');
         }
@@ -54,26 +52,6 @@ export class RecadosPage implements OnInit {
   });
 }
   
-doRefresh(event) {
-
-  setTimeout(() => {
-    this.ionViewWillEnter();
-    event.target.complete();
-  }, 500);
-}
-
-loadData(event) {
-
-  this.start = this.limit;
-
-  setTimeout(() => {
-    this.carregar().then(()=>{
-    event.target.complete();
-    });
-
-  }, 1000);
-
-}
   Cadastra_recados(){
     this.router.navigate(['/tab-nav/cadastra-recados']);
   }

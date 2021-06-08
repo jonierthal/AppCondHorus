@@ -12,7 +12,7 @@ import { Post } from 'src/services/post';
 export class LoginPage implements OnInit {
 
   nome : string = null;
-  senha : string = null
+  senha : string = null;
   
   constructor(private nativestorage: NativeStorage, private router:Router, private provider: Post, public toast: ToastController) { }
   
@@ -65,6 +65,16 @@ export class LoginPage implements OnInit {
             color: 'success'
           });
           toast.present();
+
+          this.nativestorage.setItem('nome','Jonathan');
+
+          let nome = this.nativestorage.getItem('nome');
+
+          alert('Alo', this.nome);
+          
+          
+          console.log(data['result']);
+          
           this.nome = null;
           this.senha = null;
         }
@@ -76,6 +86,7 @@ export class LoginPage implements OnInit {
           });
           toast.present();
         }
+        
       });
   }
 

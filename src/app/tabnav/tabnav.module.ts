@@ -57,7 +57,7 @@ const routes: Routes = [
         loadChildren: () => import('../equipe/equipe.module').then(m => m.EquipePageModule)
       },
       {
-        path: 'add-usuario/:id_usuario/:nome/:sobrenome/:senha_original/:telefone/:email/:data_nascimento',
+        path: 'add-usuario/:id_usuario/:nome/:sobrenome/:senha_original/:telefone/:email/:data_nascimento/:num_ap/:id_funcao/:num_box',
         loadChildren: () => import('../add-usuario/add-usuario.module').then(m => m.AddUsuarioPageModule)
       },
       {
@@ -67,6 +67,14 @@ const routes: Routes = [
       {
         path: 'administrador',
         loadChildren: () => import('../administrador/administrador.module').then(m => m.AdministradorPageModule)
+      },
+      {
+        path: 'cadastra-regras',
+        loadChildren: () => import('../cadastra-regras/cadastra-regras.module').then(m => m.CadastraRegrasPageModule)
+      },
+      {
+        path: 'cadastra-relatorios',
+        loadChildren: () => import('../cadastra-relatorios/cadastra-relatorios.module').then(m => m.CadastraRelatoriosPageModule)
       }
     ]
   },

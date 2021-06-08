@@ -15,6 +15,7 @@ export class ListarUsuariosPage implements OnInit {
   limit: number = 15;
   start: number = 0;
   nome: string = "";
+  id_funcao: string = "";
 
   constructor(public toast: ToastController, private router: Router, private provider: Post, private storage:NativeStorage) { }
 
@@ -41,8 +42,9 @@ export class ListarUsuariosPage implements OnInit {
       return new Promise(resolve => {
         this.usuarios = [];
       let dados = {
-        requisicao : 'listar',
+        requisicao : 'listar_usuarios',
         nome : this.nome,
+        id_funcao : this.id_funcao,
         limit: this.limit,
         start: this.start
       };
@@ -54,6 +56,7 @@ export class ListarUsuariosPage implements OnInit {
           else{
           for(let usuario of data['result']){
             this.usuarios.push(usuario);
+
           }
         }
           resolve(true);
@@ -61,8 +64,8 @@ export class ListarUsuariosPage implements OnInit {
     });
   }
   
-  editar(id_usuario, nome, sobrenome, senha_original, telefone, email, data_nascimento){
-    this.router.navigate(['/tab-nav/add-usuario' + '/' + id_usuario + '/' + nome +  '/' + sobrenome + '/' + senha_original + '/' + telefone + '/' + email + '/' + data_nascimento]);
+  editar(id_usuario, nome, sobrenome, senha_original, telefone, email, data_nascimento,num_ap,id_funcao,num_box){
+    this.router.navigate(['/tab-nav/add-usuario' + '/' + id_usuario + '/' + nome +  '/' + sobrenome + '/' + senha_original + '/' + telefone + '/' + email + '/' + data_nascimento + '/' + num_ap + '/' + id_funcao + '/' + num_box]);
   }
 
   excluir(id_usuario){

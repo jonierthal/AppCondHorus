@@ -20,9 +20,14 @@ export class AddUsuarioPage implements OnInit {
   email: string = "";
   data_nascimento: string = "";
   senha_original: string = "";
-  //apartamento: string = "";
-  //nivel: string = "";
+  num_ap: string = "";
+  id_funcao: string = "";
   id_usuario: string ="";
+  num_box ="";
+  apartamentos: any[];
+  funcoes: any[];
+  boxes: any[];
+
   
   constructor(public toast: ToastController, private storage: NativeStorage, private actRouter: ActivatedRoute, private router: Router, private provider: Post, public toastController: ToastController) { }
 
@@ -36,9 +41,17 @@ export class AddUsuarioPage implements OnInit {
       this.telefone = data.telefone;
       this.email = data.email;
       this.data_nascimento = data.data_nascimento;
-      //this.apartamento = data.apartamento;
-      //this.nivel = data.nivel;
+      this.num_ap = data.num_ap;
+      this.id_funcao = data.id_funcao;
+      this.num_box = data.num_box;
     });
+  }
+
+  ionViewWillEnter(){
+    this.apartamentos = [];
+    this.funcoes = [];
+    this.boxes = [];
+    this.carregar();
   }
 
   async logout(){
@@ -60,19 +73,75 @@ export class AddUsuarioPage implements OnInit {
     toast.present();
   }
 
+  carregar(){
 
+    return new Promise(resolve => {
+      this.apartamentos = [];
+      this.funcoes = [];
+      this.boxes = [];
+    let dados_ap = {
+      requisicao : 'selecionar_apartamento'
+    }
+    let dados_box = {
+      requisicao : 'selecionar_box'
+    }
+    let dados_funcao = {
+      requisicao : 'selecionar_funcao'
+    };
+    
+
+      this.provider.dadosApi(dados_ap,'/api.php').subscribe(data => {
+        if(data['result'] == '0'){
+          alert('Não possui mais dados');
+        }
+        else{
+        for(let apartamento of data['result']){
+          this.apartamentos.push(apartamento);
+        }
+      }
+        resolve(true);
+      });
+
+      this.provider.dadosApi(dados_box,'/api.php').subscribe(data => {
+        if(data['result'] == '0'){
+          alert('Não possui mais dados');
+        }
+        else{
+        for(let box of data['result']){
+          this.boxes.push(box);
+        }
+      }
+        resolve(true);
+      });
+
+      this.provider.dadosApi(dados_funcao,'/api.php').subscribe(data => {
+        if(data['result'] == '0'){
+          alert('Não possui mais dados');
+        }
+        else{
+        for(let funcao of data['result']){
+          this.funcoes.push(funcao);
+        }
+      }
+        resolve(true);
+      });
+      
+  });
+}
   cadastrar(){
     return new Promise(resolve => {
       let dados = {
-        requisicao : 'add',
+        requisicao : 'add_usuario',
         nome : this.nome,
         sobrenome : this.sobrenome,
-        senha_crip : this.senha_crip,
+        senha_original : this.senha_original,
         telefone: this.telefone,
         email: this.email,
         data_nascimento: this.data_nascimento,
-       // apartamento: this.apartamento,
-       // nivel : this.nivel,
+        num_ap: this.num_ap,
+        id_funcao : this.id_funcao,
+        num_box : this.num_box,
+
       };
 
         this.provider.dadosApi(dados,'/api.php').subscribe(data => {
@@ -93,15 +162,14 @@ export class AddUsuarioPage implements OnInit {
         telefone: this.telefone,
         email: this.email,
         data_nascimento: this.data_nascimento,
-       // apartamento : this.apartamento,
-       // nivel : this.nivel,
-       id_usuario: this.id_usuario,
+        num_ap : this.num_ap,
+        id_funcao : this.id_funcao,
+        id_usuario: this.id_usuario,
       };
 
         this.provider.dadosApi(dados,'/api.php').subscribe(data => {
-          this.router.navigate(['/tab-nav/relatorios']);
+          this.router.navigate(['/tab-nav/listar-usuarios']);
           this.MensagemSalvar();
-          console.log("aqui",this.senha_original,this.sobrenome,this.telefone,this.email);
         })
         
     })

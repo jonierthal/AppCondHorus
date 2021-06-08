@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { Post } from 'src/services/post';
 
 @Component({
   selector: 'app-administrador',
@@ -10,20 +11,29 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 })
 export class AdministradorPage implements OnInit {
 
-  constructor(public toast: ToastController, private storage:NativeStorage,private router:Router) { }
+
+
+  constructor(public toast: ToastController, private storage:NativeStorage,private router:Router, private provider: Post) { }
 
   ngOnInit() {
   }
 
+
   
   Pag_AddUsuarios(){
     this.router.navigate(['/tab-nav/add-usuario']);
-
   }
 
   Pag_ListaUsuarios(){
     this.router.navigate(['/tab-nav/listar-usuarios']);
+  }
 
+  Pag_CadastraRegras(){
+    this.router.navigate(['/tab-nav/cadastra-regras']);
+  }
+
+  Pag_CadastraRelatorios(){
+    this.router.navigate(['/tab-nav/cadastra-relatorios']);
   }
 
   async logout(){

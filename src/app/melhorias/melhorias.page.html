@@ -11,26 +11,26 @@
           </ion-buttons>
       </ion-toolbar>
     </ion-header>
-    <ion-content color="light">
-      <ion-list>
-        <ion-item-divider color="primary">
-          <ion-label class="titulo">Título: Melhorias garagem</ion-label>
-        </ion-item-divider>
+    <ion-content>
+    <ion-card class="tamanho_melhoria" *ngFor="let melhoria of melhorias" color="light">
+        <ion-card-header class="titulo" color="primary">
+          Título:{{melhoria.titulo_melhoria}}
+        </ion-card-header>
         <ion-item>
           <ion-icon name="star" slot="start" class="ion-text-wrap"></ion-icon>
-          <ion-text >Solicitante: Fabio Almeida - Apartamento: 605 - Data: 14/04/2021 </ion-text>
+          <ion-text >Solicitante: Fabio Almeida - Apartamento: 605 - Data: {{melhoria.data_inicio}} </ion-text>
         </ion-item>
-        <ion-item >
-           <ion-text><br>Recado: Precisa ser feito uma melhoria na disposições das garanges...</ion-text>
-        </ion-item>
-        <ion-item >
-          <ion-text >Responável: Subsindico/Alessandro Fabres - Data aprovação: 15/04/2021 </ion-text>
-        </ion-item>
-        <ion-item >
-          <ion-text>situação: Em andamento</ion-text>
-        </ion-item>
-      </ion-list>
-    </ion-content>
+        <ion-card-content >
+          <br><h2>Melhoria:{{melhoria.desc_melhoria}}</h2>
+        </ion-card-content>
+        <ion-card-subtitle >
+          Responsável: Subsindico/Alessandro Fabres - Data aprovação: 15/04/2021
+        </ion-card-subtitle>
+        <ion-card-subtitle >
+          situação: Em andamento
+        </ion-card-subtitle>
+    </ion-card>
+  </ion-content>
     <ion-footer class="ion-no-border">
       <ion-button class="melhoria-button" (click)="Cadastra_Melhorias()">INSERIR MELHORIA</ion-button>
     </ion-footer>   

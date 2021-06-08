@@ -16,17 +16,20 @@
 </ion-row>
 <ion-content>
 <ion-list>
-<ion-item-sliding *ngFor="let usuario of usuarios">
+<ion-item-sliding *ngFor="let usuario of usuarios" >
 <ion-item-options side="start">
-  <ion-item-option (click)="editar(usuario.id_usuario, usuario.nome, usuario.sobrenome, usuario.senha_original,usuario.telefone,usuario.email,usuario.data_nascimento)"> 
+  <ion-item-option (click)="editar(usuario.id_usuario, usuario.nome, usuario.sobrenome, usuario.senha_original,usuario.telefone,usuario.email,usuario.data_nascimento,usuario.num_ap,usuario.id_funcao,usuario.num_box)"> 
     Editar
   </ion-item-option>
 </ion-item-options>
-<ion-item><ion-label>Nome:{{usuario.nome}}&nbsp;{{usuario.sobrenome}}<br>
+<ion-item ><ion-label>Nome:{{usuario.nome}}&nbsp;{{usuario.sobrenome}}<br>
   Senha:&nbsp;{{usuario.senha_original}}<br>
   Telefone:&nbsp;{{usuario.telefone}}<br>
   Email:&nbsp;{{usuario.email}}<br>
-  data_nascimento:&nbsp;{{usuario.data_nascimento}}<br></ion-label></ion-item>
+  data_nascimento:&nbsp;{{usuario.data_nascimento}}<br>
+  Apartamento:&nbsp;{{usuario.num_ap}}<br>
+  Box de Garagem:&nbsp;{{usuario.num_box}}<br>
+  Id Função:&nbsp;{{usuario.tipo_funcao}}<br></ion-label></ion-item>
 <ion-item-options side="end">
   <ion-item-option (click)="excluir(usuario.id_usuario)" color="danger"> 
     Excluir

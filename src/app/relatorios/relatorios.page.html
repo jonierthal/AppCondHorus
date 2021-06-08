@@ -1,14 +1,30 @@
-    <ion-header>
-        <ion-toolbar>
-          <ion-title>Relatórios</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="logout()">
-              <ion-icon slot="end" name="log-out">
-                <ion-label>sair</ion-label>
-              </ion-icon>
-            </ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Relatórios</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="end" name="log-out">
+          <ion-label>sair</ion-label>
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-card *ngFor="let relatorio of relatorios" color="light">
+    <ion-card-header color="secondary">
+      <ion-label class="titulo"><h2>{{relatorio.titulo_relatorio}}</h2></ion-label>
+    </ion-card-header>
+    <ion-card-content>
+      <br><h2>{{relatorio.desc_relatorio}}</h2>
+    </ion-card-content>
+<ion-card-content>
+<ion-button  href="{{relatorio.lk_relatorio}}" color="secondary" class="relatorios-button" >
+  BAIXAR PDF</ion-button>
+</ion-card-content>
+</ion-card>
+</ion-content>
+ 
 
-  
+
+

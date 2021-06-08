@@ -36,6 +36,14 @@ const routes: Routes = [
     path: 'cadastra-melhorias',
     loadChildren: () => import('./cadastra-melhorias/cadastra-melhorias.module').then( m => m.CadastraMelhoriasPageModule)
   },
+  {
+    path: 'cadastra-regras',
+    loadChildren: () => import('./cadastra-regras/cadastra-regras.module').then( m => m.CadastraRegrasPageModule)
+  },
+  {
+    path: 'cadastra-relatorios',
+    loadChildren: () => import('./cadastra-relatorios/cadastra-relatorios.module').then( m => m.CadastraRelatoriosPageModule)
+  },
   /*,
   {
     path: 'home',

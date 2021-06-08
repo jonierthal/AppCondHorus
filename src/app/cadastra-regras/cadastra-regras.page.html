@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Adicionar Melhoria</ion-title>
+    <ion-title>Adicionar Regras</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="logout()">
         <ion-icon slot="end" name="log-out">
@@ -13,15 +13,17 @@
 <ion-content class="ion-padding">
  <ion-item>
    <ion-label position="floating">
-      Título da Melhoria
+      Título regra
    </ion-label>
-   <ion-input [(ngModel)]="titulo_melhoria" type="text" name="titulo"></ion-input>
+   <ion-input [(ngModel)]="titulo_regra" type="text" name="titulo"></ion-input>
  </ion-item>
   <ion-item>
     <ion-label position="floating">
-       Descrição
+       Descrição regra
     </ion-label>
-    <ion-input [(ngModel)]="desc_melhoria" type="text" name="descricao"></ion-input>
+    <ion-input [(ngModel)]="desc_regra" type="text" name="descricao"></ion-input>
   </ion-item>
   <ion-button  color="success" expand="block" (click)="cadastrar()">Confirma</ion-button>
  </ion-content>
+
+

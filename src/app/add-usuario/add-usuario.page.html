@@ -47,19 +47,29 @@
     </ion-label>
     <ion-input type="date" placeholder="" [(ngModel)]="data_nascimento"></ion-input>
   </ion-item>
-  <ion-item>
+  <ion-item >
     <ion-label position="floating">
       Apartamento
-    </ion-label>
-    <ion-input type="number"></ion-input>
+    </ion-label >
+    <ion-select [(ngModel)]="num_ap" placeholder="Selecione o apartamento" >
+      <ion-select-option *ngFor="let apartamento of apartamentos"  >{{apartamento.num_ap}}</ion-select-option>
+    </ion-select>
   </ion-item>
-  <ion-item>
-    <ion-label>Função:</ion-label>
-    <ion-select placeholder="Selecione" >
-      <ion-select-option value="sindico">Síndico</ion-select-option>
-      <ion-select-option value="sub_sindico">Subsíndico</ion-select-option>
-      <ion-select-option value="morador">Condômino</ion-select-option>
-      <ion-select-option value="administradora">Administrador</ion-select-option>
+  <ion-item >
+    <ion-label position="floating">
+      Box Garagem
+    </ion-label >
+    <ion-select [(ngModel)]="num_box" placeholder="Selecione o Box da garagem" >
+      <ion-select-option *ngFor="let box of boxes"  >{{box.num_box}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item >
+    <ion-label position="floating">
+      Função
+    </ion-label >
+    <ion-select [(ngModel)]="id_funcao" placeholder="Selecione a função" >
+      <ion-select-option *ngFor="let funcao of funcoes"  >
+      <span style="visibility: hidden">{{funcao.id_funcao}}</span>&nbsp;{{funcao.tipo_funcao}}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-button *ngIf="!id_usuario" color="success" expand="block" (click)="cadastrar()">Confirma</ion-button>

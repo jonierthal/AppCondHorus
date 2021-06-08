@@ -10,33 +10,21 @@
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
-    <ion-content color="light">
-      <ion-list>
-        <ion-item-divider color="secondary">
-          <ion-label class="titulo">Regra n°1:</ion-label>
-        </ion-item-divider>
-        <ion-item>
-          <ion-text >AAAAAAAAA  AAAAAAAA  AAAAAAAA    AAAAAAAAAAA AAAAAAAAAAAAAAA   AAAAAAAAA AAAAAAAAAA AAAAAAAAAAA AAAAAAA AAAAAAAAAAAA   AAAAAAAAAAA AAAAAAAAAAA AAAAAAAAAAA   AAAAAAAAAAA AAAAAAAAAAA AAAAAAAAAAAA </ion-text>
-        </ion-item>
-        <ion-item-divider color="secondary">
-          <ion-label class="titulo">Regra n°2:</ion-label>
-        </ion-item-divider>
-        <ion-item>
-          <ion-text>AAAAAAAAA  AAAAAAAA  AAAAAAAA    AAAAAAAAAAA AAAAAAAAAAAAAAA   AAAAAAAAA AAAAAAAAAA AAAAAAAAAAA AAAAAAA AAAAAAAAAAAA   AAAAAAAAAAA AAAAAAAAAAA AAAAAAAAAAA   AAAAAAAAAAA AAAAAAAAAAA AAAAAAAAAAAA </ion-text>
-        </ion-item>
-          <ion-item-divider color="secondary">
-          <ion-label class="titulo">Regra n°3:</ion-label>
-        </ion-item-divider>
-        <ion-item>
-          <ion-text>AAAAAAAAA  AAAAAAAA  AAAAAAAA    AAAAAAAAAAA AAAAAAAAAAAAAAA   AAAAAAAAA AAAAAAAAAA AAAAAAAAAAA AAAAAAA AAAAAAAAAAAA   AAAAAAAAAAA AAAAAAAAAAA AAAAAAAAAAA   AAAAAAAAAAA AAAAAAAAAAA AAAAAAAAAAAA </ion-text>
-        </ion-item>
-         <ion-item-divider color="secondary">
-          <ion-label class="titulo">Regra n°4:</ion-label>
-        </ion-item-divider>
-        <ion-item>
-          <ion-text>AAAAAAAAA  AAAAAAAA  AAAAAAAA    AAAAAAAAAAA AAAAAAAAAAAAAAA   AAAAAAAAA AAAAAAAAAA AAAAAAAAAAA AAAAAAA AAAAAAAAAAAA   AAAAAAAAAAA AAAAAAAAAAA AAAAAAAAAAA   AAAAAAAAAAA AAAAAAAAAAA AAAAAAAAAAAA </ion-text>
-        </ion-item>
-      </ion-list>
-    </ion-content>
+    <ion-content>
+    <ion-card *ngFor="let regra of regras" color="light">
+        <ion-card-header color="secondary">
+          <ion-label class="titulo"><h2>{{regra.titulo_regra}}</h2></ion-label>
+        </ion-card-header>
+        <ion-card-content>
+          <br><h2>{{regra.desc_regra}}</h2>
+        </ion-card-content>
+    </ion-card>
+   
+  </ion-content>
+  <ion-footer class="ion-no-border">
+    <ion-button href="http://www.appcondhorus.com.br/regras.pdf" color="secondary" class="regras-button" >
+    PDF REGRAS</ion-button>
+  </ion-footer> 
+
  
 
