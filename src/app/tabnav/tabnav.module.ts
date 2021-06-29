@@ -41,6 +41,10 @@ const routes: Routes = [
         loadChildren: () => import('../listar-usuarios/listar-usuarios.module').then(m => m.ListarUsuariosPageModule)
       },
       {
+        path: 'manter-regras',
+        loadChildren: () => import('../manter-regras/manter-regras.module').then(m => m.ManterRegrasPageModule)
+      },
+      {
         path: 'cadastra-recados',
         loadChildren: () => import('../cadastra-recados/cadastra-recados.module').then(m => m.CadastraRecadosPageModule)
       },
@@ -57,8 +61,16 @@ const routes: Routes = [
         loadChildren: () => import('../equipe/equipe.module').then(m => m.EquipePageModule)
       },
       {
-        path: 'add-usuario/:id_usuario/:nome/:sobrenome/:senha_original/:telefone/:email/:data_nascimento/:num_ap/:id_funcao/:num_box',
+        path: 'add-usuario/:id_usuario/:nome/:sobrenome/:senha_original/:telefone/:email/:data_nascimento/:num_ap/:num_box/:id_funcao',
         loadChildren: () => import('../add-usuario/add-usuario.module').then(m => m.AddUsuarioPageModule)
+      },
+      {
+        path: 'cadastra-regras/:id_regras/:titulo_regra/:desc_regra',
+        loadChildren: () => import('../cadastra-regras/cadastra-regras.module').then(m => m.CadastraRegrasPageModule)
+      },
+      {
+        path: 'cadastra-relatorios/:id_relatorio/:titulo_relatorio/:desc_relatorio/:lk_relatorio',
+        loadChildren: () => import('../cadastra-relatorios/cadastra-relatorios.module').then(m => m.CadastraRelatoriosPageModule)
       },
       {
         path: 'add-usuario',
@@ -71,6 +83,22 @@ const routes: Routes = [
       {
         path: 'cadastra-regras',
         loadChildren: () => import('../cadastra-regras/cadastra-regras.module').then(m => m.CadastraRegrasPageModule)
+      },
+      {
+        path: 'aprova-melhorias',
+        loadChildren: () => import('../aprova-melhorias/aprova-melhorias.module').then(m => m.AprovaMelhoriasPageModule)
+      },
+      {
+        path: 'manter-relatorios',
+        loadChildren: () => import('../manter-relatorios/manter-relatorios.module').then(m => m.ManterRelatoriosPageModule)
+      },
+      {
+        path: 'relatorios-gerais',
+        loadChildren: () => import('../relatorios-gerais/relatorios-gerais.module').then(m => m.RelatoriosGeraisPageModule)
+      },
+      {
+        path: 'perfil',
+        loadChildren: () => import('../perfil/perfil.module').then(m => m.PerfilPageModule)
       },
       {
         path: 'cadastra-relatorios',

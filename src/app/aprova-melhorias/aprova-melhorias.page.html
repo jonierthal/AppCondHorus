@@ -1,0 +1,62 @@
+
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Aprova Melhorias</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="logout()">
+              <ion-icon slot="end" name="log-out">
+                <ion-label>sair</ion-label>
+              </ion-icon>
+            </ion-button>
+          </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content >
+    <ion-card class="tamanho_melhoria"   *ngFor="let melhoria of melhorias">
+        <ion-card-header class="titulo" color="primary">{{melhoria.titulo_melhoria}}     
+        </ion-card-header>
+        <ion-item class="texto-melhoria">
+          <ion-icon name="star" slot="start" class="estrela"></ion-icon>
+          <ion-text ><br>Solicitante: {{melhoria.nome}} {{melhoria.sobrenome}}<br> 
+            - Data solicitação: {{melhoria.data_inicio | date: 'dd/MM/yyyy'}}<br><br> </ion-text>
+        </ion-item>
+        <ion-item>
+        <ion-card-content >
+          <br><h2 class="texto-melhoria">{{melhoria.desc_melhoria}}<br><br></h2>
+        </ion-card-content> 
+       </ion-item>     
+        <ion-item>
+          <ion-label position="floating">
+            Melhoria:
+          </ion-label >
+          <ion-select [(ngModel)]="id_melhoria">
+            <ion-select-option value="{{melhoria.id_melhoria}}">
+              <span>{{melhoria.id_melhoria}} {{melhoria.titulo_melhoria}}</span></ion-select-option>
+          </ion-select>
+          <ion-item *ngIf="tipo_funcao === 'sindico'"> 
+          <ion-label position="floating">
+            Responsável:
+          </ion-label >
+          <ion-select [(ngModel)]="id_responsavel" placeholder="Selecione o responsavel" >
+            <ion-select-option *ngFor="let responsavel of responsaveis">
+              <span style="visibility: hidden">{{responsavel.id_usuario}}</span>&nbsp;{{responsavel.nome}},&nbsp;{{responsavel.tipo_funcao}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+          <ion-label position="floating">
+            Status Melhoria:
+          </ion-label >
+          <ion-select [(ngModel)]="id_status" placeholder="Selecione o status da melhoria" >
+            <ion-select-option *ngFor="let statu of status" >
+              <span style="visibility: hidden">{{statu.id_status}}</span>&nbsp;{{statu.tipo_status}}</ion-select-option>
+          </ion-select>
+        </ion-item><br>
+        <p class="feedback" >&nbsp;&nbsp; Feedback: <ion-textarea  [(ngModel)]="desc_feedback" placeholder="Deixe o seu feedback..."></ion-textarea> </p>
+        <ion-button *ngIf="tipo_funcao === 'sindico'" color="secondary" class="aprova-melhoria-button" (click)="cadastrar()" >
+  ENVIAR</ion-button>
+  <ion-button *ngIf="tipo_funcao === 'sindico'" color="secondary" class="aprova-melhoria-button" (click)="editar()" >
+    editar</ion-button>
+    <ion-button *ngIf="tipo_funcao === 'fiscal'" color="secondary" class="aprova-melhoria-button" (click)="editar()" >
+      editar</ion-button>
+    </ion-card>
+  </ion-content>
+    

@@ -15,17 +15,26 @@ export class MelhoriasPage implements OnInit {
   melhorias: any[];
   limit: number = 15;
   start: number = 0;
+  dadosStorage: any;
+  tipo_funcao: string;
 
   constructor(public toast: ToastController, private storage:NativeStorage, private router:Router, private provider: Post) { }
   
+  
 
   ngOnInit() {
+    
   }
 
   ionViewWillEnter(){
     this.melhorias = [];
     this.start = 0;
     this.carregar();
+
+    this.storage.getItem('session_storage').then((res)=>{
+      this.dadosStorage = res;
+      this.tipo_funcao = this.dadosStorage.tipo_funcao;
+      })
   }
 
   carregar(){

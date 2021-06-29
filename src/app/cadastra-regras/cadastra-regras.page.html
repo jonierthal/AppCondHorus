@@ -15,15 +15,15 @@
    <ion-label position="floating">
       Título regra
    </ion-label>
-   <ion-input [(ngModel)]="titulo_regra" type="text" name="titulo"></ion-input>
+   <ion-input [(ngModel)]="titulo_regra"></ion-input>
  </ion-item>
   <ion-item>
     <ion-label position="floating">
        Descrição regra
     </ion-label>
-    <ion-input [(ngModel)]="desc_regra" type="text" name="descricao"></ion-input>
+    <ion-textarea [(ngModel)]="desc_regra"></ion-textarea>
   </ion-item>
-  <ion-button  color="success" expand="block" (click)="cadastrar()">Confirma</ion-button>
+  <ion-button  *ngIf="!id_regras" color="success" expand="block" (click)="cadastrar()">Confirma</ion-button>
+  <ion-button *ngIf="id_regras" color="primary" expand="block" (click)="editar()">Editar</ion-button>
  </ion-content>
-
-
+ 

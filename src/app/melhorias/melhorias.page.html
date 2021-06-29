@@ -12,25 +12,34 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-    <ion-card class="tamanho_melhoria" *ngFor="let melhoria of melhorias" color="light">
+    <ion-card class="tamanho_melhoria" *ngFor="let melhoria of melhorias">
         <ion-card-header class="titulo" color="primary">
-          Título:{{melhoria.titulo_melhoria}}
+          {{melhoria.titulo_melhoria}}
         </ion-card-header>
-        <ion-item>
-          <ion-icon name="star" slot="start" class="ion-text-wrap"></ion-icon>
-          <ion-text >Solicitante: Fabio Almeida - Apartamento: 605 - Data: {{melhoria.data_inicio}} </ion-text>
+        <ion-item class="texto-melhoria">
+          <ion-icon name="star" slot="start" class="estrela"></ion-icon>
+          <ion-text ><br>Solicitante: {{melhoria.nome_solicitante}} {{melhoria.sobrenome_solicitante}}
+            - Data solicitação: {{ melhoria.data_inicio | date: 'dd/MM/yyyy'}}<br><br> </ion-text>
         </ion-item>
+        <ion-item>
         <ion-card-content >
-          <br><h2>Melhoria:{{melhoria.desc_melhoria}}</h2>
+          <br><h3 class="texto-melhoria">{{melhoria.desc_melhoria}}</h3><br>
         </ion-card-content>
-        <ion-card-subtitle >
-          Responsável: Subsindico/Alessandro Fabres - Data aprovação: 15/04/2021
+       </ion-item> 
+       <ion-item>
+        <ion-card-subtitle class="texto-melhoria" ><br>
+          &nbsp;&nbsp;&nbsp; Responsável: {{melhoria.nome_responsavel}} {{melhoria.sobrenome_responsavel}}<br>
+          &nbsp;&nbsp;&nbsp; situação: {{melhoria.tipo_status}}<br><br>
         </ion-card-subtitle>
-        <ion-card-subtitle >
-          situação: Em andamento
+      </ion-item>
+      <ion-item>
+        <ion-card-subtitle class="texto-melhoria" ><br>
+           Feedback: {{melhoria.desc_feedback}}<br><br>
         </ion-card-subtitle>
+      </ion-item>
     </ion-card>
   </ion-content>
     <ion-footer class="ion-no-border">
-      <ion-button class="melhoria-button" (click)="Cadastra_Melhorias()">INSERIR MELHORIA</ion-button>
+      <ion-button class="melhoria-button" 
+       (click)="Cadastra_Melhorias()">INSERIR MELHORIA</ion-button>
     </ion-footer>   

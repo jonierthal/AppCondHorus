@@ -31,12 +31,6 @@ export class ListarUsuariosPage implements OnInit {
 
   }
 
-  addUsuarios(){
-
-    this.router.navigate(['/tab-nav/add-usuario']);
-
-  }
-
   carregar(){
 
       return new Promise(resolve => {
@@ -64,8 +58,8 @@ export class ListarUsuariosPage implements OnInit {
     });
   }
   
-  editar(id_usuario, nome, sobrenome, senha_original, telefone, email, data_nascimento,num_ap,id_funcao,num_box){
-    this.router.navigate(['/tab-nav/add-usuario' + '/' + id_usuario + '/' + nome +  '/' + sobrenome + '/' + senha_original + '/' + telefone + '/' + email + '/' + data_nascimento + '/' + num_ap + '/' + id_funcao + '/' + num_box]);
+  editar(id_usuario, nome, sobrenome, senha_original, telefone, email, data_nascimento,num_ap,num_box,id_funcao){
+    this.router.navigate(['/tab-nav/add-usuario' + '/' + id_usuario + '/' + nome +  '/' + sobrenome + '/' + senha_original + '/' + telefone + '/' + email + '/' + data_nascimento + '/' + num_ap + '/'  + '/' + num_box + '/' + id_funcao]);
   }
 
   excluir(id_usuario){

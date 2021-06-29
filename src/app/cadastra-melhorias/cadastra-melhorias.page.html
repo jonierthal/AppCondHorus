@@ -15,13 +15,13 @@
    <ion-label position="floating">
       Título da Melhoria
    </ion-label>
-   <ion-input [(ngModel)]="titulo_melhoria" type="text" name="titulo"></ion-input>
+   <ion-input [(ngModel)]="titulo_melhoria" type="text" name="titulo" required="true" requiredMessage="Preencha o Titulo!"></ion-input>
  </ion-item>
   <ion-item>
     <ion-label position="floating">
        Descrição
     </ion-label>
-    <ion-input [(ngModel)]="desc_melhoria" type="text" name="descricao"></ion-input>
-  </ion-item>
-  <ion-button  color="success" expand="block" (click)="cadastrar()">Confirma</ion-button>
+    <ion-textarea [(ngModel)]="desc_melhoria" type="text" name="descricao" required="true" requiredMessage="Preencha a descrição!"></ion-textarea>
+  </ion-item><br>
+  <ion-button  color="primary" expand="block" (click)="cadastrar()">Confirma</ion-button>
  </ion-content>

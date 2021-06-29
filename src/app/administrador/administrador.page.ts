@@ -10,18 +10,29 @@ import { Post } from 'src/services/post';
   styleUrls: ['./administrador.page.scss'],
 })
 export class AdministradorPage implements OnInit {
-
-
+  
+  dadosStorage: any;
+  tipo_funcao: string;
 
   constructor(public toast: ToastController, private storage:NativeStorage,private router:Router, private provider: Post) { }
 
+  ionViewWillEnter(){
+
+    this.storage.getItem('session_storage').then((res)=>{
+      this.dadosStorage = res;
+      this.tipo_funcao = this.dadosStorage.tipo_funcao;
+      })
+  }
+  
   ngOnInit() {
   }
-
-
   
   Pag_AddUsuarios(){
     this.router.navigate(['/tab-nav/add-usuario']);
+  }
+
+  Pag_ManterRegras(){
+    this.router.navigate(['/tab-nav/manter-regras']);
   }
 
   Pag_ListaUsuarios(){
@@ -36,6 +47,13 @@ export class AdministradorPage implements OnInit {
     this.router.navigate(['/tab-nav/cadastra-relatorios']);
   }
 
+  Pag_ManterRelatorios(){
+    this.router.navigate(['/tab-nav/manter-relatorios']);
+  }
+
+  Pag_AprovaMelhorias(){
+    this.router.navigate(['/tab-nav/aprova-melhorias']);
+  }
   async logout(){
     this.storage.clear();
     this.router.navigate(['/login']);

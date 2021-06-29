@@ -7,6 +7,14 @@ ion-toolbar{
 .titulo{
     font-weight: bold;
     text-align: center;
+    text-transform: uppercase;
+}
+
+.texto-recado{
+    font-weight: bold;
+    text-align: left;
+    text-transform: uppercase;
+    color: black;
 }
 
 .autor{
@@ -22,4 +30,9 @@ ion-text{
     width: 100%;
     font-weight: bold;
 }
+
+.tamanhoImg{ 
+    max-width: 40px;
+    max-height: 40px;
+  }
 

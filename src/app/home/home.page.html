@@ -1,67 +1,83 @@
-<!--<img class="logo" src="../../assets/img/logo3.jpg">-->
-<p>Bem vindo ao App Cond Horus!</p>
 <ion-content class="menu">
-    <div class="cards">
-      <ion-row>
-        <ion-col>
-          <ion-card (click)="Pag_recados()">
-            <ion-card-header></ion-card-header>
-             <img class="tamanhoImg" src="../../assets/img/menu_recados.png"> 
-            <h6>Recados</h6>
-          </ion-card>   
-        </ion-col>
-        <ion-col size="6">
-          <ion-card (click)="Pag_regras()">
-            <ion-card-header></ion-card-header>
-              <img class="tamanhoImg" src="../../assets/img/menu_regras.png" alt="">
-            <h6>Regras</h6>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="6">
-          <ion-card (click)="Pag_melhorias()">
-            <ion-card-header></ion-card-header>
-              <img class="tamanhoImg" src="../../assets/img/menu_problemas.png" alt="">
-              <h6>Melhorias</h6>
-          </ion-card>
-        </ion-col>
-        <ion-col size="6">
-          <ion-card (click)="Pag_relatorios()">
-            <ion-card-header></ion-card-header>
-              <img class="tamanhoImg" src="../../assets/img/menu_relatorios.png" alt="">
-              <h6>Relatórios</h6>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="6">
-          <ion-card (click)="Pag_equipe()">
-            <ion-card-header></ion-card-header>
-              <img class="tamanhoImg" src="../../assets/img/menu_equipe.png" alt="">
-             <h6>Equipe</h6>
-           </ion-card>
-        </ion-col>
-        <ion-col size="6">
-          <ion-card (click)="logout()">
-            <ion-card-header></ion-card-header>
-            <img class="tamanhoImg" src="../../assets/img/menu_sair.png" alt="">
-             <h6>Sair</h6>
-           </ion-card>
-        </ion-col>
-      </ion-row>  
-      <ion-row>
-        <ion-col size="6">
-          <ion-card (click)="Pag_Administrador()">
-            <ion-card-header></ion-card-header>
-              <img class="tamanhoImg" src="../../assets/img/menu_adm.png" alt="">
-             <h6>Administrador</h6>
-           </ion-card>
-        </ion-col>
-      </ion-row>  
-    </div>
-  </ion-content>
-
-         
-
+  <h1>Bem vindo ao App Cond Horus, {{nome}} - {{tipo_funcao}}!</h1>
+      <div class="cards">
+        <ion-row>
+          <ion-col>
+            <ion-card (click)="Pag_recados()">
+              <ion-card-header></ion-card-header>
+               <img class="tamanhoImg" src="../../assets/img/menu_recados.png"> 
+              <h6>Recados</h6>
+            </ion-card>   
+          </ion-col>
+          <ion-col size="6">
+            <ion-card (click)="Pag_regras()">
+              <ion-card-header></ion-card-header>
+                <img class="tamanhoImg" src="../../assets/img/menu_regras.png" alt="">
+              <h6>Regras</h6>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            <ion-card (click)="Pag_melhorias()">
+              <ion-card-header></ion-card-header>
+                <img class="tamanhoImg" src="../../assets/img/menu_problemas.png" alt="">
+                <h6>Melhorias</h6>
+            </ion-card>
+          </ion-col>
+          <ion-col size="6">
+            <ion-card (click)="Pag_relatorios()">
+              <ion-card-header></ion-card-header>
+                <img class="tamanhoImg" src="../../assets/img/menu_relatorios.png" alt="">
+                <h6>Relatórios Fiscais</h6>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            <ion-card (click)="Pag_equipe()">
+              <ion-card-header></ion-card-header>
+                <img class="tamanhoImg" src="../../assets/img/menu_equipe.png" alt="">
+               <h6>Equipe</h6>
+             </ion-card>
+          </ion-col>
+          <ion-col size="6">
+            <ion-card (click)="RelatoriosGerais()">
+              <ion-card-header></ion-card-header>
+              <img class="tamanhoImg" src="../../assets/img/icon_rel_gerais.png" alt="">
+               <h6>Relatórios Gerais</h6>
+             </ion-card>
+          </ion-col>
+        </ion-row>  
+        <ion-row >  
+          <ion-col size="6">
+            <ion-card (click)="Pag_Perfil()">
+              <ion-card-header></ion-card-header>
+                <img class="tamanhoImg" src="../../assets/img/icon_perfil.png" alt="">
+               <h6>Perfil</h6>
+             </ion-card>
+          </ion-col>
+          <ion-col size="6">
+            <ion-card (click)="logout()">
+              <ion-card-header></ion-card-header>
+              <img class="tamanhoImg" src="../../assets/img/menu_sair.png" alt="">
+               <h6>Sair</h6>
+             </ion-card>
+          </ion-col> 
+        </ion-row> 
+        <ion-row>
+          <ion-col *ngIf="tipo_funcao !== 'condômino'" size="6">
+            <ion-card (click)="Pag_Administrador()">
+              <ion-card-header></ion-card-header>
+                <img class="tamanhoImg" src="../../assets/img/menu_adm.png" alt="">
+               <h6>Administrador</h6>
+             </ion-card>
+          </ion-col>
+        </ion-row> 
+      </div>
+    </ion-content>
+  
+           
+  
+    
   

@@ -13,16 +13,26 @@ export class LoginPage implements OnInit {
 
   nome : string = null;
   senha : string = null;
+  dadosStorage: any;
+  tipo_funcao: string;
   
   constructor(private nativestorage: NativeStorage, private router:Router, private provider: Post, public toast: ToastController) { }
   
   ngOnInit() {
   }
 
+  ionViewWillEnter(){
+
+    this.nativestorage.getItem('session_storage').then((res)=>{
+      this.dadosStorage = res;
+      this.tipo_funcao = this.dadosStorage.tipo_funcao;
+      })
+  }
+
   async Login(){
       if(this.nome == null && this.senha == null){
         const toast = await this.toast.create({
-          message: 'Preencha o usuario e a senha',
+          message: 'ERRO: Informe Usuário e Senha',
           duration:2000,
           color:'warning'
         });
@@ -31,7 +41,7 @@ export class LoginPage implements OnInit {
       }
       else if(this.nome == null){
         const toast = await this.toast.create({
-          message: 'Preencha a senha',
+          message: 'ERRO: Informe o Usuário',
           duration:2000,
           color:'warning'
         });
@@ -40,7 +50,7 @@ export class LoginPage implements OnInit {
     }  
       else if(this.senha == null){
           const toast = await this.toast.create({
-            message: 'Preencha a senha',
+            message: 'ERRO: Informe a senha',
             duration:2000,
             color:'warning'
           });
@@ -49,6 +59,7 @@ export class LoginPage implements OnInit {
       }  
 
       let dados = {
+        
         requisicao : 'login',
         nome : this.nome,
         senha: this.senha,
@@ -56,8 +67,11 @@ export class LoginPage implements OnInit {
 
       this.provider.dadosApi(dados,'/api.php').subscribe(async data => {
         var alert = data['msg'];
+        
         if(data['success']){
+          
           this.nativestorage.setItem('session_storage',data['result']);
+          
           this.router.navigate(['/tab-nav/home']);
           const toast = await this.toast.create({
             message: 'Logado com sucesso',
@@ -65,16 +79,7 @@ export class LoginPage implements OnInit {
             color: 'success'
           });
           toast.present();
-
-          this.nativestorage.setItem('nome','Jonathan');
-
-          let nome = this.nativestorage.getItem('nome');
-
-          alert('Alo', this.nome);
-          
-          
-          console.log(data['result']);
-          
+                   
           this.nome = null;
           this.senha = null;
         }
@@ -89,5 +94,6 @@ export class LoginPage implements OnInit {
         
       });
   }
+  
 
 }

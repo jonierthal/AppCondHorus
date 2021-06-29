@@ -10,7 +10,20 @@ import { ToastController } from '@ionic/angular';
 })
 export class HomePage {
 
+  dadosStorage: any;
+  tipo_funcao: string;
+  nome: string;
+
   constructor(public toast: ToastController, private storage:NativeStorage, private router:Router) {}
+
+  ionViewWillEnter(){
+
+    this.storage.getItem('session_storage').then((res)=>{
+      this.dadosStorage = res;
+      this.tipo_funcao = this.dadosStorage.tipo_funcao;
+      this.nome = this.dadosStorage.nome;
+      })
+  }
 
   Pag_recados(){
     this.router.navigate(['/tab-nav/recados']);
@@ -34,6 +47,13 @@ export class HomePage {
 
   Pag_Administrador(){
     this.router.navigate(['/tab-nav/administrador']);
+  }
+
+  RelatoriosGerais(){
+    this.router.navigate(['/tab-nav/relatorios-gerais']);
+  }
+  Pag_Perfil(){
+    this.router.navigate(['/tab-nav/perfil']);
   }
 
   async logout(){

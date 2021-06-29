@@ -29,7 +29,8 @@
     </ion-label>
     <ion-input [(ngModel)]="lk_relatorio" type="text" name="lk_pdf"></ion-input>
   </ion-item>
-  <ion-button  color="success" expand="block" (click)="cadastrar()">Confirma</ion-button>
+  <ion-button *ngIf="!id_relatorio" color="success" expand="block" (click)="cadastrar()">Confirma</ion-button>
+  <ion-button *ngIf="id_relatorio" color="primary" expand="block" (click)="editar()">Editar</ion-button>
  </ion-content>
 
 

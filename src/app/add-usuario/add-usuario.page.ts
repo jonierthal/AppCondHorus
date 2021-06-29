@@ -27,6 +27,8 @@ export class AddUsuarioPage implements OnInit {
   apartamentos: any[];
   funcoes: any[];
   boxes: any[];
+  dadosStorage: any;
+  tipo_funcao: string;
 
   
   constructor(public toast: ToastController, private storage: NativeStorage, private actRouter: ActivatedRoute, private router: Router, private provider: Post, public toastController: ToastController) { }
@@ -52,6 +54,10 @@ export class AddUsuarioPage implements OnInit {
     this.funcoes = [];
     this.boxes = [];
     this.carregar();
+    this.storage.getItem('session_storage').then((res)=>{
+      this.dadosStorage = res;
+      this.tipo_funcao = this.dadosStorage.tipo_funcao;
+      })
   }
 
   async logout(){
@@ -128,7 +134,100 @@ export class AddUsuarioPage implements OnInit {
       
   });
 }
-  cadastrar(){
+  async cadastrar(){
+    if(this.nome == null && this.sobrenome == null && this.senha_original == null && this.telefone == null && this.email == null
+       && this.data_nascimento == null && this.num_ap == null && this.id_funcao == null && this.num_box == null){
+      const toast = await this.toast.create({
+        message: 'Atenção preencha todos os dados',
+        duration:2000,
+        color:'warning'
+      });
+      toast.present();
+      return;
+    }
+    else if(this.nome == null ){
+     const toast = await this.toast.create({
+       message: 'Atenção preencha o nome',
+       duration:2000,
+       color:'warning'
+     });
+     toast.present();
+     return;
+   }
+   else if(this.sobrenome == null ){
+    const toast = await this.toast.create({
+      message: 'Atenção preencha o sobrenome',
+      duration:2000,
+      color:'warning'
+    });
+    toast.present();
+    return;
+  }
+  else if(this.senha_original == null ){
+    const toast = await this.toast.create({
+      message: 'Atenção preencha a senha',
+      duration:2000,
+      color:'warning'
+    });
+    toast.present();
+    return;
+  }
+  else if(this.telefone == null ){
+    const toast = await this.toast.create({
+      message: 'Atenção preencha o telefone',
+      duration:2000,
+      color:'warning'
+    });
+    toast.present();
+    return;
+  }
+  else if(this.email == null ){
+    const toast = await this.toast.create({
+      message: 'Atenção preencha o email',
+      duration:2000,
+      color:'warning'
+    });
+    toast.present();
+    return;
+  }
+  else if(this.data_nascimento == null ){
+    const toast = await this.toast.create({
+      message: 'Atenção preencha a data de nascimento',
+      duration:2000,
+      color:'warning'
+    });
+    toast.present();
+    return;
+  }
+  else if(this.num_ap == null ){
+    const toast = await this.toast.create({
+      message: 'Atenção preencha o apartamento',
+      duration:2000,
+      color:'warning'
+    });
+    toast.present();
+    return;
+  }
+  else if(this.num_box == null ){
+    const toast = await this.toast.create({
+      message: 'Atenção preencha o box',
+      duration:2000,
+      color:'warning'
+    });
+    toast.present();
+    return;
+  }
+  else if(this.id_funcao == null ){
+    const toast = await this.toast.create({
+      message: 'Atenção preencha a função',
+      duration:2000,
+      color:'warning'
+    });
+    toast.present();
+    return;
+  }
+    else if(this.nome, this.sobrenome, this.senha_original, this.telefone, this.email, this.data_nascimento,
+      this.num_ap, this.num_box, this.id_funcao){
     return new Promise(resolve => {
       let dados = {
         requisicao : 'add_usuario',
@@ -139,9 +238,8 @@ export class AddUsuarioPage implements OnInit {
         email: this.email,
         data_nascimento: this.data_nascimento,
         num_ap: this.num_ap,
-        id_funcao : this.id_funcao,
         num_box : this.num_box,
-
+        id_funcao : this.id_funcao,
       };
 
         this.provider.dadosApi(dados,'/api.php').subscribe(data => {
@@ -149,7 +247,7 @@ export class AddUsuarioPage implements OnInit {
           this.MensagemSalvar();
         })
     })
-
+  }
   };
   
   editar(){
@@ -168,7 +266,7 @@ export class AddUsuarioPage implements OnInit {
       };
 
         this.provider.dadosApi(dados,'/api.php').subscribe(data => {
-          this.router.navigate(['/tab-nav/listar-usuarios']);
+          this.router.navigate(['/tab-nav/home']);
           this.MensagemSalvar();
         })
         

@@ -13,6 +13,9 @@ export class CadastraMelhoriasPage implements OnInit {
 
   titulo_melhoria: string = "";
   desc_melhoria: string = "";
+  id_status = 6;
+  dadosStorage: any;
+  id_usuario: number;
 
   constructor(public toast: ToastController, private storage:NativeStorage, private router:Router,
   private actRouter: ActivatedRoute, private provider: Post) { }
@@ -23,6 +26,14 @@ export class CadastraMelhoriasPage implements OnInit {
       this.desc_melhoria = data.desc_melhoria;
     });
   }
+
+  ionViewWillEnter(){
+    
+    this.storage.getItem('session_storage').then((res)=>{
+      this.dadosStorage = res;
+      this.id_usuario = this.dadosStorage.id_usuario;
+      })
+    }
 
   async logout(){
     this.storage.clear();
@@ -43,20 +54,51 @@ export class CadastraMelhoriasPage implements OnInit {
       toast.present();
     }
 
-    cadastrar(){
+    async cadastrar(){
+      if(this.titulo_melhoria == null && this.desc_melhoria == null){
+        const toast = await this.toast.create({
+          message: 'Atenção preencha todos os dados',
+          duration:2000,
+          color:'warning'
+        });
+        toast.present();
+        return;
+      }
+      else if(this.titulo_melhoria == null){
+        const toast = await this.toast.create({
+          message: 'Atenção preencha o título',
+          duration:2000,
+          color:'warning'
+        });
+        toast.present();
+        return;
+      }
+      else if(this.desc_melhoria == null){
+        const toast = await this.toast.create({
+          message: 'Atenção preencha a descrição',
+          duration:2000,
+          color:'warning'
+        });
+        toast.present();
+        return;
+      }
+      else if(this.titulo_melhoria,this.desc_melhoria){
       return new Promise(resolve => {
         let dados = {
           requisicao : 'add_melhoria',
           titulo_melhoria : this.titulo_melhoria,
           desc_melhoria : this.desc_melhoria,
+          id_usuario : this.id_usuario,
         };
+        
   
           this.provider.dadosApi(dados,'/api.php').subscribe(data => {
-            this.router.navigate(['/tab-nav/melhorias']);
+            this.router.navigate(['/tab-nav/home']);
             this.MensagemSalvar();
+            console.log(this.id_status);
           })
       })
   
     };
-
+  }
 }

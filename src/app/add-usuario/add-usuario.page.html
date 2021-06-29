@@ -63,7 +63,7 @@
       <ion-select-option *ngFor="let box of boxes"  >{{box.num_box}}</ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-item >
+  <ion-item *ngIf="tipo_funcao === 'sindico'">
     <ion-label position="floating">
       Função
     </ion-label >

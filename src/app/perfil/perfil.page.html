@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-title>Perfil</ion-title>  
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="end" name="log-out">
+          <ion-label>sair</ion-label>
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="menu">
+  <div class="cards">
+      <img class="tamanhoImg" src="../../assets/img/icon_usuario2.png"><br><br>
+        <ion-button class="recado_button" (click)="carregar()"> Ver Perfil </ion-button>
+  </div>
+  <div class="cards" *ngFor="let usuario of usuarios">
+  <ion-card >
+    <h6>Usuário:{{usuario.nome}} {{usuario.sobrenome}}</h6>
+    <h6>Senha: {{usuario.senha_original}}</h6>
+    <h6>Telefone: (54) {{usuario.telefone}}</h6>
+    <h6>Data Nascimento: {{usuario.data_nascimento}}</h6>
+    <h6>Email: {{usuario.email}}</h6>
+    <h6>Apartamento: {{usuario.num_ap}}</h6>
+    <h6>Box de Garagem: {{usuario.num_box}}</h6>
+    <h6>Função: {{usuario.tipo_funcao}}</h6>
+  </ion-card>  
+  <ion-button class="perfil-button" expand="full" color="success" class="recado-button" 
+  (click)="Edita_usuario(usuario.id_usuario, usuario.nome, usuario.sobrenome, usuario.senha_original,
+  usuario.telefone,usuario.email,usuario.data_nascimento,usuario.num_ap,usuario.num_box,usuario.id_funcao)">
+  Editar informações</ion-button>
+</div>
+</ion-content>
+

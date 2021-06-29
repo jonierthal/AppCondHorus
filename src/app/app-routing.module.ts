@@ -44,6 +44,26 @@ const routes: Routes = [
     path: 'cadastra-relatorios',
     loadChildren: () => import('./cadastra-relatorios/cadastra-relatorios.module').then( m => m.CadastraRelatoriosPageModule)
   },
+  {
+    path: 'aprova-melhorias',
+    loadChildren: () => import('./aprova-melhorias/aprova-melhorias.module').then( m => m.AprovaMelhoriasPageModule)
+  },
+  {
+    path: 'manter-regras',
+    loadChildren: () => import('./manter-regras/manter-regras.module').then( m => m.ManterRegrasPageModule)
+  },
+  {
+    path: 'manter-relatorios',
+    loadChildren: () => import('./manter-relatorios/manter-relatorios.module').then( m => m.ManterRelatoriosPageModule)
+  },
+  {
+    path: 'relatorios-gerais',
+    loadChildren: () => import('./relatorios-gerais/relatorios-gerais.module').then( m => m.RelatoriosGeraisPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
   /*,
   {
     path: 'home',

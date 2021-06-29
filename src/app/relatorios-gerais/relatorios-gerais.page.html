@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-title>Relatórios Gerais</ion-title>  
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="end" name="log-out">
+          <ion-label>sair</ion-label>
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  <ion-item >
+    <ion-select #newSelect [(ngModel)]="selRelatorio" placeholder="Selecione o relatório desejado" >
+      <ion-select-option value="recados">Recados</ion-select-option>
+      <ion-select-option value="melhorias">Melhorias</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button color="success" expand="block" (click)="Confirma()">Confirma</ion-button>
+<ion-content *ngIf="selRelatorio === 'melhorias'">
+  <ion-card class="tamanho_melhoria" *ngFor="let melhoria of melhorias">
+      <ion-card-header class="titulo" color="primary">
+        {{melhoria.titulo_melhoria}}
+      </ion-card-header>
+      <ion-item class="texto-melhoria">
+        <ion-icon name="star" slot="start" class="estrela"></ion-icon>
+        <ion-text ><br>Solicitante: {{melhoria.nome_solicitante}} {{melhoria.sobrenome_solicitante}}
+          - Data solicitação: {{ melhoria.data_inicio | date: 'dd/MM/yyyy'}}<br><br> </ion-text>
+      </ion-item>
+      <ion-item>
+      <ion-card-content >
+        <br><h3 class="texto-melhoria">{{melhoria.desc_melhoria}}</h3><br>
+      </ion-card-content>
+     </ion-item> 
+     <ion-item>
+      <ion-card-subtitle class="texto-melhoria" ><br>
+        &nbsp;&nbsp;&nbsp; Responsável: {{melhoria.nome_responsavel}} {{melhoria.sobrenome_responsavel}}<br>
+        &nbsp;&nbsp;&nbsp; situação: {{melhoria.tipo_status}}<br><br>
+      </ion-card-subtitle>
+    </ion-item>
+    <ion-item>
+      <ion-card-subtitle class="texto-melhoria" ><br>
+         Feedback: {{melhoria.desc_feedback}}<br><br>
+      </ion-card-subtitle>
+    </ion-item>
+    <ion-button  (click)="GerarPDF_Melhorias(melhoria.titulo_melhoria,melhoria.nome_solicitante,
+    melhoria.sobrenome_solicitante,melhoria.data_inicio,melhoria.desc_melhoria,melhoria.nome_responsavel,
+    melhoria.sobrenome_responsavel,melhoria.tipo_status,melhoria.desc_feedback)" color="secondary" class="relatorios-button" >
+      Gerar PDF</ion-button>
+  </ion-card>
+</ion-content>
+<ion-content *ngIf="selRelatorio === 'recados'">
+  <ion-card *ngFor="let recado of recados" color="light" >
+    <ion-card-header class="titulo" color="success">
+       {{recado.titulo_recado}}
+    </ion-card-header>
+  <ion-item>
+    <ion-card-content>
+      <br><h2 class="texto-recado">{{recado.desc_recado}}</h2> 
+    </ion-card-content>
+  </ion-item>
+  <ion-item>
+    <ion-card-subtitle class="texto-recado">
+      <br>&nbsp;&nbsp;&nbsp; {{recado.nome}} {{recado.sobrenome}} <br>
+      <p>&nbsp;&nbsp;&nbsp; {{ recado.data_recado | date: 'dd/MM/yyyy'}}<br>
+    </ion-card-subtitle>
+  </ion-item>
+  <ion-button  (click)="GerarPDF_Recados(recado.nome,recado.sobrenome, recado.titulo_recado,recado.desc_recado,recado.data_recado)" color="secondary" class="relatorios-button" >
+    Gerar PDF</ion-button>
+</ion-card>
+</ion-content>

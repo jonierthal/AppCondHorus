@@ -11,20 +11,25 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-      <ion-card *ngFor="let recado of recados" color="light" >
-          <ion-card-header class="titulo" color="secondary" color="success">
-           {{recado.titulo_recado}}
-          </ion-card-header>
-          <ion-card-content>
-          <br><h2>{{recado.desc_recado}}</h2> 
-          </ion-card-content>
-          <ion-card-subtitle>
-            <br>Autor: Sindico - Data: {{recado.data_recado}}<br><br>
-          </ion-card-subtitle>
+        <ion-card *ngFor="let recado of recados" color="light" >
+            <ion-card-header class="titulo" color="success">
+               {{recado.titulo_recado}}
+            </ion-card-header>
+          <ion-item>
+            <ion-card-content>
+              <br><h2 class="texto-recado">{{recado.desc_recado}}</h2> 
+            </ion-card-content>
+          </ion-item>
+          <ion-item>
+            <ion-card-subtitle class="texto-recado">
+              <br>&nbsp;&nbsp;&nbsp; {{recado.nome}} {{recado.sobrenome}} <br>
+              <p>&nbsp;&nbsp;&nbsp; {{ recado.data_recado | date: 'dd/MM/yyyy'}}<br>
+            </ion-card-subtitle>
+          </ion-item>
       </ion-card>
     </ion-content>
       <ion-footer class="ion-no-border">
-        <ion-button color="success" class="recado-button" (click)="Cadastra_recados()">INSERIR RECADO</ion-button>
+        <ion-button *ngIf="tipo_funcao === 'sindico'" color="success" class="recado-button" (click)="Cadastra_recados()">INSERIR RECADO</ion-button>
       </ion-footer>  
       
 

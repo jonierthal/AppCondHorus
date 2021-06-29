@@ -11,8 +11,17 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-button color="light" class="administrador-button" (click)="Pag_AddUsuarios()">Cadastro de novo Usuário</ion-button>
-  <ion-button color="light" class="administrador-button" (click)="Pag_ListaUsuarios()">Listagem de Usuários</ion-button>
-  <ion-button color="light" class="administrador-button" (click)="Pag_CadastraRegras()">Cadastro de regras</ion-button>
-  <ion-button color="light" class="administrador-button" (click)="Pag_CadastraRelatorios()">Cadastro de relatórios</ion-button>
+  <ion-button *ngIf="tipo_funcao === 'sindico'" color="light" class="administrador-button" (click)="Pag_AddUsuarios()">Cadastro de novo Usuário</ion-button>
+  <ion-button *ngIf="tipo_funcao === 'administrador'" color="light" class="administrador-button" (click)="Pag_AddUsuarios()">Cadastro de novo Usuário</ion-button>
+  <ion-button *ngIf="tipo_funcao === 'sindico'"  color="light" class="administrador-button" (click)="Pag_ListaUsuarios()">Listagem de Usuários</ion-button>
+  <ion-button *ngIf="tipo_funcao === 'administrador'" color="light" class="administrador-button" (click)="Pag_ListaUsuarios()">Listagem de Usuários</ion-button>
+  <ion-button *ngIf="tipo_funcao === 'sindico'"  color="light" class="administrador-button" (click)="Pag_CadastraRegras()">Cadastro de regras</ion-button>
+  <ion-button *ngIf="tipo_funcao === 'administrador'" color="light" class="administrador-button" (click)="Pag_CadastraRegras()">Cadastro de regras</ion-button>
+  <ion-button *ngIf="tipo_funcao === 'sindico'" color="light" class="administrador-button" (click)="Pag_ManterRegras()">Manter regras</ion-button>
+  <ion-button *ngIf="tipo_funcao === 'sindico'"  color="light" class="administrador-button" (click)="Pag_CadastraRelatorios()">Cadastro de relatórios</ion-button>
+  <ion-button *ngIf="tipo_funcao === 'administrador'" color="light" class="administrador-button" (click)="Pag_CadastraRelatorios()">Cadastro de relatórios</ion-button>
+  <ion-button *ngIf="tipo_funcao === 'sindico'" color="light" class="administrador-button" (click)="Pag_ManterRelatorios()">Manter Relatórios</ion-button>
+  <ion-button *ngIf="tipo_funcao === 'sindico'" color="light" class="administrador-button" (click)="Pag_AprovaMelhorias()">Aprovação de melhorias</ion-button>
+  <ion-button *ngIf="tipo_funcao === 'sindico'" color="light" class="administrador-button" (click)="Pag_AprovaMelhorias()">Gerenciar melhorias</ion-button>
+  <ion-button *ngIf="tipo_funcao === 'fiscal'" color="light" class="administrador-button" (click)="Pag_AprovaMelhorias()">Gerenciar melhorias</ion-button>
 </ion-content>

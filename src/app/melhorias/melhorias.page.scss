@@ -12,4 +12,20 @@ ion-toolbar{
 .titulo{
     font-weight: bold;
     text-align: center;
+    text-transform: uppercase;    
+}
+
+.texto-melhoria{
+    font-weight: bold;
+    text-align: left;
+    text-transform: uppercase;
+    color: black;
+}
+
+.estrela{
+    color: #f0d32f	;
+}
+
+.card{
+    background-color: white;
 }
