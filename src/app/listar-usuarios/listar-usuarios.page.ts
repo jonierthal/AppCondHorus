@@ -42,12 +42,13 @@ export class ListarUsuariosPage implements OnInit {
         limit: this.limit,
         start: this.start
       };
-
         this.provider.dadosApi(dados,'/api.php').subscribe(data => {
           if(data['result'] == '0'){
             alert('Não possui mais dados');
+            this.ionViewWillEnter();
           }
           else{
+            this.usuarios = [];
           for(let usuario of data['result']){
             this.usuarios.push(usuario);
 

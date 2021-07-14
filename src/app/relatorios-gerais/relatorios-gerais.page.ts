@@ -237,6 +237,7 @@ export class RelatoriosGeraisPage implements OnInit {
         });
     });
   }
+  
   else if(this.selRelatorio == 'recados'){
     return new Promise(resolve => {
       this.recados = [];
